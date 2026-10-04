@@ -1,7 +1,9 @@
 {% verbatim %}
+{% load wagtailcore_tags %}
+{% wagtail_site as current_site %}
 <footer class="border-top mt-auto py-4">
     <div class="container">
-        <p class="mb-0">&copy; {% now "Y" %} {{ settings.core.SiteSettings.site.site_name }}</p>
+        <p class="mb-0">&copy; {% now "Y" %} {{ current_site.site_name }}</p>
     </div>
 </footer>
 {% endverbatim %}
