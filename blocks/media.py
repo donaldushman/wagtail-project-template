@@ -11,12 +11,3 @@ class ContentImageBlock(blocks.StructBlock):
         icon = "image"
         label = "Image"
 
-
-class ScreenshotBlock(blocks.StructBlock):
-    image = ImageBlock()
-    caption = blocks.CharBlock(required=False, max_length=255)
-
-    class Meta:
-        template = "blocks/media/screenshot.html"
-        icon = "image"
-        label = "Screenshot"
