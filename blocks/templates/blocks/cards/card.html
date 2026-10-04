@@ -1,3 +1,4 @@
+{% verbatim %}
 {% load wagtailimages_tags wagtailcore_tags %}
 <div class="card h-100">
     {% if value.image %}{% image value.image fill-800x800 as card_image %}<img src="{{ card_image.url }}" width="{{ card_image.width }}" height="{{ card_image.height }}" class="card-img-top" alt="{{ card_image.alt }}" loading="lazy">{% endif %}
@@ -7,3 +8,4 @@
         {% if value.link.href %}<div class="mt-auto pt-3"><a href="{{ value.link.href }}" class="btn btn-primary">{{ value.link.text }}</a></div>{% endif %}
     </div>
 </div>
+{% endverbatim %}
