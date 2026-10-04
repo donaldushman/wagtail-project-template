@@ -1,12 +1,13 @@
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase, TestCase
 from wagtail import blocks
+from wagtail.models import Site
 
 from .cards import CardGridBlock
 from .content import HeadingBlock
 from .links import LinkBlock
 
 
-class LinkBlockTests(SimpleTestCase):
+class LinkBlockTests(TestCase):
     def test_external_url_sets_href(self):
         value = LinkBlock().to_python(
             {"text": "Example", "url": "https://example.com/", "page": None}
@@ -21,8 +22,9 @@ class LinkBlockTests(SimpleTestCase):
 
     def test_page_and_url_together_are_invalid(self):
         block = LinkBlock()
+        page = Site.objects.get(is_default_site=True).root_page.specific
         value = block.to_python(
-            {"text": "Example", "url": "https://example.com/", "page": object()}
+            {"text": "Example", "url": "https://example.com/", "page": page.pk}
         )
         with self.assertRaises(blocks.StructBlockValidationError):
             block.clean(value)
