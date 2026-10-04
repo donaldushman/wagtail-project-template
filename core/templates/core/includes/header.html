@@ -5,8 +5,8 @@
 {% get_menu_pages as menu_pages %}
 <header class="border-bottom">
     <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/">
+        <div class="container position-relative">
+            <a class="navbar-brand" href="/" aria-label="{{ current_site.site_name|default:'Home' }} home">
                 {% if settings.core.SiteSettings.logo %}
                     {% image settings.core.SiteSettings.logo height-48 as logo %}
                     <img src="{{ logo.url }}" width="{{ logo.width }}" height="{{ logo.height }}" alt="">
@@ -14,11 +14,11 @@
                     {{ current_site.site_name|default:"Home" }}
                 {% endif %}
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavigation" aria-controls="siteNavigation" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler ms-auto me-2" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavigation" aria-controls="siteNavigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="siteNavigation">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     {% for menu_page in menu_pages %}
                         {% menu_page_state menu_page as menu_state %}
                         <li class="nav-item">
@@ -26,10 +26,20 @@
                         </li>
                     {% endfor %}
                 </ul>
-                <form class="d-flex" action="{% url 'core:search' %}" method="get" role="search">
-                    <label class="visually-hidden" for="site-search">Search</label>
-                    <input id="site-search" class="form-control me-2" type="search" name="query" placeholder="Search" value="{{ request.GET.query }}">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+            <div class="navbar-search">
+                <button class="search-toggle" type="button" aria-label="Open search" aria-expanded="false" aria-controls="site-search">
+                    <span aria-hidden="true">&#128269;</span>
+                </button>
+                <form action="{% url 'core:search' %}" method="get" class="search-form" role="search" id="site-search">
+                    <label for="search-input" class="visually-hidden">Search</label>
+                    <input class="form-control" type="search" id="search-input" name="query" value="{{ request.GET.query|default:'' }}" placeholder="Search">
+                    <button type="submit" class="search-submit" aria-label="Submit search">
+                        <span aria-hidden="true">&#128269;</span>
+                    </button>
+                    <button type="button" class="search-close" aria-label="Close search">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </form>
             </div>
         </div>
