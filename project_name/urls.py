@@ -8,6 +8,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 
 urlpatterns = [
+    path("", include("core.urls")),
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
