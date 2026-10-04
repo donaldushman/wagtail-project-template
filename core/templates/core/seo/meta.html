@@ -1,0 +1,10 @@
+{% verbatim %}
+<title>{% if title %}{{ title }}{% if site_name and title != site_name %} | {{ site_name }}{% endif %}{% else %}{{ site_name }}{% endif %}</title>
+{% if description %}<meta name="description" content="{{ description }}">{% endif %}
+{% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}">{% endif %}
+{% if noindex %}<meta name="robots" content="noindex">{% endif %}
+<meta property="og:title" content="{{ title|default:site_name }}">
+{% if description %}<meta property="og:description" content="{{ description }}">{% endif %}
+{% if canonical_url %}<meta property="og:url" content="{{ canonical_url }}">{% endif %}
+{% if social_image_url %}<meta property="og:image" content="{{ social_image_url }}">{% endif %}
+{% endverbatim %}
