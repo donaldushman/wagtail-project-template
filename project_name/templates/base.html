@@ -8,6 +8,7 @@
     {% seo_meta page=page %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/css/site.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/search.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
@@ -19,6 +20,7 @@
     </main>
     {% include "core/includes/footer.html" %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'core/js/search.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>
