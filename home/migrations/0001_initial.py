@@ -5,7 +5,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("basepage", "0004_basepage_canonical_url_basepage_robots_noindex_and_more"),
+        ("basepage", "0001_initial"),
     ]
 
     operations = [
