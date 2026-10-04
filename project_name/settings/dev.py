@@ -4,7 +4,7 @@ from .base import *
 
 
 env = environ.Env()
-environ.Env.read_env()
+environ.Env.read_env(BASE_DIR / ".env")
 
 DEBUG = True
 SECRET_KEY = env("SECRET_KEY", default="dev-only-secret-key")
