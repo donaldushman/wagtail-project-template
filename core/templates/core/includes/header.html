@@ -1,0 +1,37 @@
+{% verbatim %}
+{% load menu_tags wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
+{% get_settings use_default_site=True %}
+{% get_menu_pages as menu_pages %}
+<header class="border-bottom">
+    <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                {% if settings.core.SiteSettings.logo %}
+                    {% image settings.core.SiteSettings.logo height-48 as logo %}
+                    <img src="{{ logo.url }}" width="{{ logo.width }}" height="{{ logo.height }}" alt="">
+                {% else %}
+                    {{ settings.core.SiteSettings.site.site_name|default:"Home" }}
+                {% endif %}
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavigation" aria-controls="siteNavigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="siteNavigation">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% for menu_page in menu_pages %}
+                        {% menu_page_state menu_page as menu_state %}
+                        <li class="nav-item">
+                            <a class="nav-link{% if menu_state %} active{% endif %}" href="{% pageurl menu_page %}"{% if menu_state == "current" %} aria-current="page"{% endif %}>{{ menu_page.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <form class="d-flex" action="{% url 'core:search' %}" method="get" role="search">
+                    <label class="visually-hidden" for="site-search">Search</label>
+                    <input id="site-search" class="form-control me-2" type="search" name="query" placeholder="Search" value="{{ request.GET.query }}">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+{% endverbatim %}
