@@ -1,0 +1,28 @@
+{% verbatim %}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <h1>Search</h1>
+    <form action="{% url 'core:search' %}" method="get" role="search" class="mb-4">
+        <label for="search-query" class="form-label">Search the site</label>
+        <div class="input-group">
+            <input id="search-query" class="form-control" type="search" name="query" value="{{ search_query }}">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+    {% if search_query %}
+        <h2 class="h4">Results for “{{ search_query }}”</h2>
+        {% if search_results %}
+            <ul>
+                {% for result in search_results %}
+                    <li><a href="{% pageurl result %}">{{ result.title }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
+{% endverbatim %}
