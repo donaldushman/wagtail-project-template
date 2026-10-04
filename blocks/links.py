@@ -19,7 +19,7 @@ class LinkBlock(blocks.StructBlock):
         result = super().clean(value)
         page = result.get("page")
         url = result.get("url")
-        if not page and not url and (self.meta.required or result.get("text")):
+        if not page and not url and result.get("text"):
             raise blocks.StructBlockValidationError(non_block_errors=ValidationError("Choose an internal page or enter an external URL."))
         if page and url:
             raise blocks.StructBlockValidationError(non_block_errors=ValidationError("Choose either an internal page or an external URL, not both."))
