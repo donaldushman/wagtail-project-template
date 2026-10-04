@@ -7,6 +7,8 @@ BASE_DIR = PROJECT_DIR.parent
 INSTALLED_APPS = [
     "basepage",
     "home",
+    "blocks",
+    "content",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.contrib.settings",
