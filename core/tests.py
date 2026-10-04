@@ -71,7 +71,7 @@ class SEOTests(CorePageTestCase):
 
 
 class CanonicalHostMiddlewareTests(TestCase):
-    @override_settings(SITE_URL="https://example.com")
+    @override_settings(SITE_URL="https://example.com", ALLOWED_HOSTS=["example.com", "www.example.com"])
     def test_www_redirects_to_canonical_host(self):
         middleware = CanonicalHostMiddleware(lambda request: HttpResponse("ok"))
         request = RequestFactory().get(
@@ -81,7 +81,7 @@ class CanonicalHostMiddlewareTests(TestCase):
         self.assertEqual(response.status_code, 301)
         self.assertEqual(response["Location"], "https://example.com/example/?a=1")
 
-    @override_settings(SITE_URL="https://example.com")
+    @override_settings(SITE_URL="https://example.com", ALLOWED_HOSTS=["example.com", "www.example.com"])
     def test_canonical_host_is_not_redirected(self):
         middleware = CanonicalHostMiddleware(lambda request: HttpResponse("ok"))
         request = RequestFactory().get("/example/", HTTP_HOST="example.com")
