@@ -1,0 +1,39 @@
+{
+  "name": "{{ project_name }}",
+  "description": "Django/Wagtail application generated from the reusable Wagtail project template.",
+  "keywords": [
+    "django",
+    "wagtail",
+    "python"
+  ],
+  "stack": "heroku-24",
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "addons": [
+    {
+      "plan": "heroku-postgresql:essential-0"
+    }
+  ],
+  "env": {
+    "SECRET_KEY": {
+      "description": "Django secret key.",
+      "generator": "secret"
+    },
+    "SITE_URL": {
+      "description": "Canonical public site URL, including https:// and no trailing slash."
+    },
+    "AWS_STORAGE_BUCKET_NAME": {
+      "description": "S3 bucket used for production static and media files."
+    },
+    "AWS_S3_REGION_NAME": {
+      "description": "AWS region containing the S3 bucket.",
+      "value": "us-east-2"
+    },
+    "AWS_CLOUDFRONT_DOMAIN": {
+      "description": "CloudFront distribution domain, without https://."
+    }
+  }
+}
