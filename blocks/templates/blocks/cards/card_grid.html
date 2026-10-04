@@ -1,6 +1,8 @@
+{% verbatim %}
 {% load wagtailcore_tags %}
 <section{% if value.anchor_id %} id="{{ value.anchor_id }}"{% endif %} class="card-grid my-5">
     <h2{% if value.visually_hide_heading %} class="visually-hidden"{% endif %}>{{ value.heading }}</h2>
     {% if value.introduction %}<div class="card-grid-introduction">{{ value.introduction|richtext }}</div>{% endif %}
     <div class="row g-4 mt-3">{% for card in value.cards %}<div class="col-12 col-md-6 col-lg-4">{% include_block card %}</div>{% endfor %}</div>
 </section>
+{% endverbatim %}
