@@ -1,0 +1,6 @@
+{% load wagtailimages_tags %}
+<figure class="screenshot my-5">
+    {% image value.image width-1400 as image %}
+    <img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}" class="img-fluid border rounded" loading="lazy">
+    {% if value.caption %}<figcaption class="mt-2 text-body-secondary">{{ value.caption }}</figcaption>{% endif %}
+</figure>
