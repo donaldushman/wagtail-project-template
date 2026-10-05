@@ -11,6 +11,12 @@
       "url": "heroku/python"
     }
   ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
   "addons": [
     {
       "plan": "heroku-postgresql:essential-0"
