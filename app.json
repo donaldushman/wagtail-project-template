@@ -17,22 +17,28 @@
     }
   ],
   "env": {
+    "AWS_ACCESS_KEY_ID": {
+      "description": "AWS access key ID used by the application to write to S3."
+    },
+    "AWS_CLOUDFRONT_DOMAIN": {
+      "description": "CloudFront distribution domain, without https://."
+    },
+    "AWS_S3_REGION_NAME": {
+      "description": "AWS region containing the S3 bucket.",
+      "value": "us-east-2"
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "description": "AWS secret access key used by the application to write to S3."
+    },
+    "AWS_STORAGE_BUCKET_NAME": {
+      "description": "S3 bucket used for production static and media files."
+    },
     "SECRET_KEY": {
       "description": "Django secret key.",
       "generator": "secret"
     },
     "SITE_URL": {
       "description": "Canonical public site URL, including https:// and no trailing slash."
-    },
-    "AWS_STORAGE_BUCKET_NAME": {
-      "description": "S3 bucket used for production static and media files."
-    },
-    "AWS_S3_REGION_NAME": {
-      "description": "AWS region containing the S3 bucket.",
-      "value": "us-east-2"
-    },
-    "AWS_CLOUDFRONT_DOMAIN": {
-      "description": "CloudFront distribution domain, without https://."
     }
   }
 }
