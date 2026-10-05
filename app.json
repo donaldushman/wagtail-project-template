@@ -1,5 +1,4 @@
 {
-  "name": "{{ project_name }}",
   "description": "Django/Wagtail application generated from the reusable Wagtail project template.",
   "keywords": [
     "django",
