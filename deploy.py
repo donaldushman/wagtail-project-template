@@ -5,8 +5,11 @@ os.environ.setdefault(
     "{{ project_name }}.settings.production",
 )
 
+import django
 from django.core.management import call_command
 
+
+django.setup()
 
 call_command("migrate")
 call_command("collectstatic", interactive=False)
