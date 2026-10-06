@@ -10,3 +10,4 @@ wagtail-modeladmin==2.5.0
 wagtaildraftsharing==0.3.0
 django-requestguard @ git+https://github.com/donaldushman/django-requestguard.git@02655b82389c91fd61f1e0a19016789cf9c87569
 wagtail-linkaudit @ git+https://github.com/donaldushman/wagtail-linkaudit.git@ffbc2ae5c1decaa9c622342455fa0ace3551a9a4
+django-protected-docs @ git+https://github.com/donaldushman/django-protected-docs.git@v0.1.1
