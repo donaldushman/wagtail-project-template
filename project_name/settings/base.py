@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_requestguard",
+    "protected_docs",
 ]
 
 MIDDLEWARE = [
@@ -88,3 +89,7 @@ WAGTAILSEARCH_BACKENDS = {
 # Used by wagtail-linkaudit when building admin report URLs.
 WAGTAIL_ADMIN_URL = "/admin/"
 LINKAUDIT_EMAIL_RECIPIENTS = []
+
+PROTECTED_DOCS_ROOT = BASE_DIR / "docs" / "_build" / "html"
+PROTECTED_DOCS_ACCESS = "staff"
+PROTECTED_DOCS_LOGIN_URL = "wagtailadmin_login"
