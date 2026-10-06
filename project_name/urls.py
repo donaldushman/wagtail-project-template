@@ -14,6 +14,7 @@ urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("draft/", include(wagtaildraftsharing_urls)),
+    path("docs/", include("protected_docs.urls")),
 ]
 
 if settings.DEBUG:
