@@ -43,6 +43,17 @@ AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
 AWS_S3_REGION_NAME = env("AWS_S3_REGION_NAME", default="us-east-2")
 AWS_CLOUDFRONT_DOMAIN = env("AWS_CLOUDFRONT_DOMAIN")
 
+DATABASE_BACKUP_LOCATION = env(
+    "DATABASE_BACKUP_LOCATION",
+    default="backups",
+)
+DATABASE_BACKUP_RETENTION = env.int(
+    "DATABASE_BACKUP_RETENTION",
+    default=30,
+)
+if DATABASE_BACKUP_RETENTION < 1:
+    raise ValueError("DATABASE_BACKUP_RETENTION must be at least 1 day.")
+
 STORAGES = {
     "default": {
         "BACKEND": "storages.backends.s3.S3Storage",
