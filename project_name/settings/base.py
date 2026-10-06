@@ -20,7 +20,10 @@ INSTALLED_APPS = [
     "wagtail.documents",
     "wagtail.images",
     "wagtail.search",
+    "wagtaildraftsharing",
     "wagtail.admin",
+    "wagtail_modeladmin",
+    "wagtail_linkaudit",
     "wagtail",
     "modelcluster",
     "taggit",
@@ -31,6 +34,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_requestguard",
 ]
 
 MIDDLEWARE = [
@@ -42,6 +46,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_requestguard.middleware.BlockBotsMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
@@ -79,3 +84,7 @@ WAGTAILSEARCH_BACKENDS = {
         "BACKEND": "wagtail.search.backends.database",
     }
 }
+
+# Used by wagtail-linkaudit when building admin report URLs.
+WAGTAIL_ADMIN_URL = "/admin/"
+LINKAUDIT_EMAIL_RECIPIENTS = []
