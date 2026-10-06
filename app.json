@@ -5,7 +5,7 @@
     "wagtail",
     "python"
   ],
-  "stack": "heroku-24",
+  "stack": "heroku-26",
   "buildpacks": [
     {
       "url": "heroku/python"
