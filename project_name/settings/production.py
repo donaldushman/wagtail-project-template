@@ -19,7 +19,7 @@ if not site.hostname:
 
 ALLOWED_HOSTS = env.list(
     "ALLOWED_HOSTS",
-    default=[site.hostname, f"www.{site.hostname}"],
+    default=[".herokuapp.com"],
 )
 
 CSRF_TRUSTED_ORIGINS = env.list(
