@@ -4,10 +4,13 @@ import sys
 
 
 def main():
-    os.environ.setdefault(
-        "DJANGO_SETTINGS_MODULE",
-        "{{ project_name }}.settings.dev",
+    default_settings = (
+        "{{ project_name }}.settings.production"
+        if os.environ.get("DYNO")
+        else "{{ project_name }}.settings.dev"
     )
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", default_settings)
+
     from django.core.management import execute_from_command_line
 
     execute_from_command_line(sys.argv)
