@@ -5,6 +5,7 @@ from django.urls import include, path
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
+import wagtaildraftsharing.urls as wagtaildraftsharing_urls
 
 
 urlpatterns = [
@@ -12,6 +13,7 @@ urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
+    path("draft/", include(wagtaildraftsharing_urls)),
 ]
 
 if settings.DEBUG:
